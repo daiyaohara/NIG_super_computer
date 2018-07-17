@@ -16,7 +16,7 @@ $ scp file_name user_name@gw2.ddbj.nig.ac.jp:/home/user_name/
 
 ### sftp (server -> local)
 $ sftp user_name@gw2.ddbj.nig.ac.jp  
-> get PATH
+$ > get PATH
 
 ### メモリ容量を指定してジョブを投げる
 $ qsub -l s_vmem=512G -l mem_req=512G -l medium FILE_NAME  
