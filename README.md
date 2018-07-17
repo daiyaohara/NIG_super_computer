@@ -2,14 +2,14 @@
 
 ## コマンドまとめ
 ### login
-$ ssh user_name@gw2.ddbj.nig.ac.jp  
+$ ssh user_name@gw2.ddbj.nig.ac.jp  #gateway node
 $ qlogin  
  
 ### ノードからのlogout
 $ exit  
 
 ### gatewayノードからのlogout
-$ exit  
+$ exit  #logoutしても投入中のジョブは消えない。
 
 ### scp (local -> server)
 $ scp file_name user_name@gw2.ddbj.nig.ac.jp:/home/user_name/
@@ -51,7 +51,7 @@ HOST gw2.ddbj.nig.ac.jp
 4. サーバー側にてrmateをダウンロードする  
 $ wget -O /home/user_name/rmate https://raw.github.com/aurora/rmate/master/rmate  
 $ chmod +x rmate  
-5.gateway_nodeにおいて  
+5. gateway_nodeにおいて  
 $ bash rmate ファイル名   
 でVS code使用可能。qlogin後では使用不可。
 
