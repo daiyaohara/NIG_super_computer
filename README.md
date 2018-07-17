@@ -76,6 +76,13 @@ $ exit
 ### scp
 $ scp file_name daiyaohara@gw2.ddbj.nig.ac.jp:/home/daiyaohara/
 
+### メモリ容量を指定してジョブを投げる
+$ qsub -l s_vmem=512G -l mem_req=512G -l medium tSNE.sh 
+
+### ジョブの確認
+$ qstat  #自分のジョブの状況を確認する  
+$ qstat -g c #全体の状況を確認する  
+
 ### vi command memo
 空白行を削除
 1. :%s/\s*$   で末尾の空白を削除
