@@ -46,7 +46,7 @@ $ qdel -u user_name #自分のジョブをすべて終了させる。
 と設定しておく。  
 3. host 側にて~/.ssh/config を以下のように設定  
 
-```Plain Text:~/.ssh/config
+```:~/.ssh/config
 HOST gw2.ddbj.nig.ac.jp  
     ForwardAgent yes  
     RemoteForward 52698 localhost:52698  
