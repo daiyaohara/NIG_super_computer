@@ -11,11 +11,16 @@ $ exit
 ### gatewayノードからのlogout
 $ exit  
 
-### scp
+### scp (local -> server)
 $ scp file_name user_name@gw2.ddbj.nig.ac.jp:/home/user_name/
 
+### sftp (server -> local)
+$ sftp user_name@gw2.ddbj.nig.ac.jp  
+> get PATH
+
 ### メモリ容量を指定してジョブを投げる
-$ qsub -l s_vmem=512G -l mem_req=512G -l medium tSNE.sh #メモリ容量を指定して投げないとmedium nodeでもMemory Errorが出る。
+$ qsub -l s_vmem=512G -l mem_req=512G -l medium FILE_NAME  
+#メモリ容量を指定して投げないとmedium nodeでもMemory Errorが出る。デフォルトは4GB  
 
 ### ジョブの確認
 $ qstat  #自分のジョブの状況を確認する  
