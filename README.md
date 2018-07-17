@@ -4,20 +4,19 @@
 2. https://bi.biopapyrus.jp/os/linux/qsub.html
 ## memo
 ### qsubの基本
-1. 実行したいコマンドをシェルスクリプト内に記述し、qsubコマンドでジョブを投入する。
-例
-#!/bin/sh
-#$ -q small
-#$ -cwd
-path=~/unix15
-bowtie2 -x ${path}/rnaseq/ecoli_genome 
-        -U ${path}/rnaseq/test_fastq/ecoli.1.fastq
-        -S ${path}/sge/results/ecoli.sam
+1. 実行したいコマンドをシェルスクリプト内に記述し、qsubコマンドでジョブを投入する。  
+例    
+#!/bin/sh  
+#$ -q small  
+#$ -cwd  
+path=~/unix15  
+bowtie2 -x ${path}/rnaseq/ecoli_genome   
+        -U ${path}/rnaseq/test_fastq/ecoli.1.fastq  
+        -S ${path}/sge/results/ecoli.sam  
         
-注意点として他のマシンに仕事をさせるので、ファイル内のpathはすべて絶対パスで書く。
-#$でオプションを指定。
-
-(-cwdコマンドを指定したときは相対パスでOK）
+注意点として他のマシンに仕事をさせるので、ファイル内のpathはすべて絶対パスで書く。  
+#$でオプションを指定。  
+(-cwdコマンドを指定したときは相対パスでOK）  
 #### qsub option
 -S 実行時のシェルを指定
 -l メモリ容量の確保や計算機などの指定
@@ -27,21 +26,8 @@ bowtie2 -x ${path}/rnaseq/ecoli_genome
 -cwd qsubコマンドを実行したディレクトリで始める。
 
 #### アレイジョブ
-例
-#!/bin/zsh
-#$ -S /bin/zsh
-#$ -t 1-10:1
-#$ -l s_vmem=16G -l mem_req=16G
-#$ -pe def_slot 16
-#$ -cwd
-seq_libs=(SRR000001 SRR000002 SRR000003 SRR000004 SRR000005 SRR000006 SRR000007 SRR000008 SRR000009 SRR000010)
-seq_lib=seq_libs[$SGE_TASK_ID]
-#1. remove adapter
-cutadapt -a ACTTTTTCGG $seq_lib.fastq > $seq_lib.qc1.fastq
-#2. quality filetering
-perl prinsesq-lite.pl --verbos -fastq $seq_lib.qc1.fastq -trim_qual_left 20 -trim_qual_right 20 -out_good $seq_lib.qc2
-#3. mapping
-bowtie2 -x INDEX -U $seq_lib.qc2.fastq -S $seq_lib.sam
+オプション #$ -t 1-x:1を加える。  
+これは$SGE_TASK_IDに1からxまで一つずつ代入してジョブを走らせるオプションである。  
 
 ### 各ノードの特徴について
 #### thin node
