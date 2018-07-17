@@ -1,8 +1,48 @@
 # NIG_super_computer
 ## reference  
-https://sc2.ddbj.nig.ac.jp/index.php/ja-howtouse
-
+1. https://sc2.ddbj.nig.ac.jp/index.php/ja-howtouse
+2. https://bi.biopapyrus.jp/os/linux/qsub.html
 ## memo
+### qsubの基本
+1. 実行したいコマンドをシェルスクリプト内に記述し、qsubコマンドでジョブを投入する。
+例
+#!/bin/sh
+#$ -q small
+#$ -cwd
+path=~/unix15
+bowtie2 -x ${path}/rnaseq/ecoli_genome 
+        -U ${path}/rnaseq/test_fastq/ecoli.1.fastq
+        -S ${path}/sge/results/ecoli.sam
+        
+注意点として他のマシンに仕事をさせるので、ファイル内のpathはすべて絶対パスで書く。
+#$でオプションを指定。
+
+(-cwdコマンドを指定したときは相対パスでOK）
+#### qsub option
+-S 実行時のシェルを指定
+-l メモリ容量の確保や計算機などの指定
+-pe 利用するプロセッサー
+-t アレイジョブ。互いに独立な複数のジョブを同じ方法で解析したい場合に利用する。
+-N ジョブ名
+-cwd qsubコマンドを実行したディレクトリで始める。
+
+#### アレイジョブ
+例
+#!/bin/zsh
+#$ -S /bin/zsh
+#$ -t 1-10:1
+#$ -l s_vmem=16G -l mem_req=16G
+#$ -pe def_slot 16
+#$ -cwd
+seq_libs=(SRR000001 SRR000002 SRR000003 SRR000004 SRR000005 SRR000006 SRR000007 SRR000008 SRR000009 SRR000010)
+seq_lib=seq_libs[$SGE_TASK_ID]
+#1. remove adapter
+cutadapt -a ACTTTTTCGG $seq_lib.fastq > $seq_lib.qc1.fastq
+#2. quality filetering
+perl prinsesq-lite.pl --verbos -fastq $seq_lib.qc1.fastq -trim_qual_left 20 -trim_qual_right 20 -out_good $seq_lib.qc2
+#3. mapping
+bowtie2 -x INDEX -U $seq_lib.qc2.fastq -S $seq_lib.sam
+
 ### 各ノードの特徴について
 #### thin node
 1. 1CPUあたりの処理能力が最も高性能
@@ -18,9 +58,11 @@ https://sc2.ddbj.nig.ac.jp/index.php/ja-howtouse
 
 ### ファイルシステムに関して
 1. 数GBの少数ファイルに高速アクセスできるが、多数のファイル操作には弱い
-2. 数GB以上のファイルを配置するときや、数MBのファイルを数百個配置するときはストライプカウントを変更すると早くなる。
-   $ lfs setstripe -c ストライプ数 対象ディレクトリ
+2. 数GB以上のファイルを配置するときや、数MBのファイルを数百個配置するときはストライプカウントを変更すると早くなる。  
+   $ lfs setstripe -c ストライプ数 対象ディレクトリ  
 3. 数KBのファイルを操作するときはストライプ数をあげると逆に負荷が上がる。
+
+### UGEのジョブ投入数の上限
 
 ## login
 $ ssh user_name@gw2.ddbj.nig.ac.jp  
