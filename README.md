@@ -92,3 +92,9 @@ $ qdel -u user_name #自分のジョブをすべて終了させる。
 空白行を削除
 1. :%s/\s*$   で末尾の空白を削除
 2. :v/./d　  　ですべての空白行を削除
+
+### editorに関して
+gateway_nodeにおいて  
+$ bash rmate ファイル名  
+でVS code使用可能。
+
