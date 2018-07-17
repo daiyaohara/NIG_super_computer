@@ -65,7 +65,7 @@ $ ./conda config --add channels defaults
 $ ./conda config --add channels conda-forge  
 $ ./conda config --add channels bioconda  
 #### 仮想環境構築
-$ ./conda create -n ENV_NAME python=3.5 #~miniconda3/envs/ENV_NAMEに仮想環境が作られる。  
+$ ./conda create -n ENV_NAME python=3.5  #/home/user_name/miniconda3/envs/ENV_NAMEに仮想環境が作られる  
 $ source activate ENV_NAME #有効化  
 $ ./conda install -n ENV_NAME pip  #pipをENV_NAMEにインストール  
 $ which pip #~/miniconda3/envs/ENV_NAME/bin/pip  
