@@ -45,9 +45,13 @@ $ qdel -u user_name #自分のジョブをすべて終了させる。
 }  
 と設定しておく。  
 3. host 側にて~/.ssh/config を以下のように設定  
+
+```bash:~/.ssh/config
 HOST gw2.ddbj.nig.ac.jp  
     ForwardAgent yes  
     RemoteForward 52698 localhost:52698  
+```
+
 4. サーバー側にてrmateをダウンロードする  
 $ wget -O /home/user_name/rmate https://raw.github.com/aurora/rmate/master/rmate  
 $ chmod +x rmate  
