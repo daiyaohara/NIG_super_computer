@@ -83,7 +83,7 @@ https://github.com/lvdmaaten/bhtsne よりリポジトリをダウンロード
 g++ sptree.cpp tsne.cpp tsne_main.cpp -o bh_tsne -O2　#bh_tsneを有効化
 
 ## UGEの基本
-### qsubの基本
+### qsubの基本 
 1. 実行したいコマンドをシェルスクリプト内に記述し、qsubコマンドでジョブを投入する。  
 例    
 #!/bin/sh  
