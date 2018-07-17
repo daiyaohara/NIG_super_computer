@@ -5,6 +5,9 @@
 3. https://sc2.ddbj.nig.ac.jp/images/stories/meetingdoc/20120510/ja/ja_Knowhow-for-entering-jobs-in-UGE-1.pdf
 4. https://sc2.ddbj.nig.ac.jp/index.php/index.php/ja-uge-additional#info8
 ## memo
+### 用語
+OSS オープンソースソフトウェア
+
 ### qsubの基本
 1. 実行したいコマンドをシェルスクリプト内に記述し、qsubコマンドでジョブを投入する。  
 例    
