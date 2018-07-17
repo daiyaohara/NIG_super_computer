@@ -77,11 +77,16 @@ $ exit
 $ scp file_name user_name@gw2.ddbj.nig.ac.jp:/home/user_name/
 
 ### メモリ容量を指定してジョブを投げる
-$ qsub -l s_vmem=512G -l mem_req=512G -l medium tSNE.sh 
+$ qsub -l s_vmem=512G -l mem_req=512G -l medium tSNE.sh #メモリ容量を指定して投げないとmedium nodeでもMemory Errorが出る。
 
 ### ジョブの確認
 $ qstat  #自分のジョブの状況を確認する  
+$ qstat -j job_ID #job_ID のジョブについて状況を確認する。  
 $ qstat -g c #全体の状況を確認する  
+
+### ジョブを終了させる
+$ qdel job_ID #job_IDのジョブを終了させる。  
+$ qdel -u user_name #自分のジョブをすべて終了させる。  
 
 ### vi command memo
 空白行を削除
