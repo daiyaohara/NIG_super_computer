@@ -56,6 +56,20 @@ $ bash rmate ファイル名
 でVS code使用可能。qlogin後では使用不可。
 
 ## python環境設定
+### conda 仮想環境
+$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ bash Miniconda3-latest-Linux-x86_64.sh
+$ cd miniconda3/bin/ #ここに移動して仮想環境を作らないとエラーがでる
+$ ./conda config --add channels defaults
+$ ./conda config --add channels conda-forge
+$ ./conda config --add channels bioconda
+$ ./conda create -n ENV_NAME python=3.5 #~miniconda3/envs/ENV_NAMEに仮想環境が作られる。
+$ source activate ENV_NAME #有効化
+$ ./conda install -n ENV_NAME pip
+$ which pip #~/miniconda3/envs/ENV_NAME/bin/pip
+$ ./conda list -n ENV_NAME #インストールされているパッケージの確認
+$ source deactivate ENV_NAME #無効化
+
 ### virtualenv
 1. virtualenvはデフォルトでインストールされている。
 2. virtualenv pyenv1
