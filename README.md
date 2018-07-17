@@ -1,6 +1,6 @@
 # NIG_super_computer
 ## reference  
-ssh daiyaohara@gw2.ddbj.nig.ac.jp
+https://sc2.ddbj.nig.ac.jp/index.php/ja-howtouse
 
 ## login
 $ ssh user_name@gw2.ddbj.nig.ac.jp  
