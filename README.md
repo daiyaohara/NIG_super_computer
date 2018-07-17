@@ -74,7 +74,7 @@ $ exit
 $ exit  
 
 ### scp
-$ scp file_name daiyaohara@gw2.ddbj.nig.ac.jp:/home/daiyaohara/
+$ scp file_name user_name@gw2.ddbj.nig.ac.jp:/home/user_name/
 
 ### メモリ容量を指定してジョブを投げる
 $ qsub -l s_vmem=512G -l mem_req=512G -l medium tSNE.sh 
