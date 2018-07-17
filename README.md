@@ -2,6 +2,7 @@
 ## reference  
 1. https://sc2.ddbj.nig.ac.jp/index.php/ja-howtouse
 2. https://bi.biopapyrus.jp/os/linux/qsub.html
+3. https://sc2.ddbj.nig.ac.jp/images/stories/meetingdoc/20120510/ja/ja_Knowhow-for-entering-jobs-in-UGE-1.pdf
 ## memo
 ### qsubの基本
 1. 実行したいコマンドをシェルスクリプト内に記述し、qsubコマンドでジョブを投入する。  
@@ -18,12 +19,12 @@ bowtie2 -x ${path}/rnaseq/ecoli_genome
 #$でオプションを指定。  
 (-cwdコマンドを指定したときは相対パスでOK）  
 #### qsub option
--S 実行時のシェルを指定
--l メモリ容量の確保や計算機などの指定
--pe 利用するプロセッサー
--t アレイジョブ。互いに独立な複数のジョブを同じ方法で解析したい場合に利用する。
--N ジョブ名
--cwd qsubコマンドを実行したディレクトリで始める。
+-S 実行時のシェルを指定  
+-l メモリ容量の確保や計算機などの指定   
+-pe 利用するプロセッサー  
+-t アレイジョブ。互いに独立な複数のジョブを同じ方法で解析したい場合に利用する。  
+-N ジョブ名  
+-cwd qsubコマンドを実行したディレクトリで始める。  
 
 #### アレイジョブ
 オプション #$ -t 1-x:1を加える。  
@@ -49,21 +50,29 @@ bowtie2 -x ${path}/rnaseq/ecoli_genome
 3. 数KBのファイルを操作するときはストライプ数をあげると逆に負荷が上がる。
 
 ### UGEのジョブ投入数の上限
+#### ジョブ投入数の上限
+1. 全員で50000ジョブ(実行待ちジョブ合計数が50000ジョブ)
+2. 1userで5000ジョブ(実行待ちジョブ合計数が5000ジョブ)
+3. アレイジョブはタスク数にかかわらず1ジョブとカウントされるが、75000タスクが上限
 
-## login
+#### ジョブの同時実行数上限
+qquotaコマンドで確認可能。現状300まで可能
+
+## コマンドまとめ
+### login
 $ ssh user_name@gw2.ddbj.nig.ac.jp  
 $ qlogin  
-
-## ノードからのlogout
+ 
+### ノードからのlogout
 $ exit  
 
-## gatewayノードからのlogout
+### gatewayノードからのlogout
 $ exit  
 
-## scp
+### scp
 $ scp file_name daiyaohara@gw2.ddbj.nig.ac.jp:/home/daiyaohara/
 
-## vi command memo
+### vi command memo
 空白行を削除
 1. :%s/\s*$   で末尾の空白を削除
 2. :v/./d　  　ですべての空白行を削除
