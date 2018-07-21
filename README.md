@@ -18,7 +18,8 @@ $ scp file_name user_name@gw2.ddbj.nig.ac.jp:/home/user_name/
 $ sftp user_name@gw2.ddbj.nig.ac.jp  
 $ > get PATH
 
-### メモリ容量を指定してジョブを投げる
+### ジョブを投げる
+$ qsub -l d_rt=192:00:00 -l s_rt=192:00:00 test.sh   #3日以上ジョブを実行したいとき  
 $ qsub -l s_vmem=512G -l mem_req=512G -l medium FILE_NAME  
 #メモリ容量を指定して投げないとmedium nodeでもMemory Errorが出る。デフォルトは4GB  
 各ノードのオプション  
