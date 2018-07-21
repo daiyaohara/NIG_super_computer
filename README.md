@@ -25,8 +25,10 @@ $ qsub -l s_vmem=512G -l mem_req=512G -l medium FILE_NAME
 -l fat #fat node  
 -l medium #medium node  
 -l month #month_hdd.q  
--l month_qpu #month_gpu.q  
+-l gpu #month_gpu.q  
 -l short #short.q  
+-l ssh #month_ssh.q (phase2のみ）
+
 
 ### ジョブの確認
 $ qstat  #自分のジョブの状況を確認する  
