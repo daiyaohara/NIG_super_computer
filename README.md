@@ -21,6 +21,12 @@ $ > get PATH
 ### メモリ容量を指定してジョブを投げる
 $ qsub -l s_vmem=512G -l mem_req=512G -l medium FILE_NAME  
 #メモリ容量を指定して投げないとmedium nodeでもMemory Errorが出る。デフォルトは4GB  
+各ノードのオプション  
+-l fat #fat node  
+-l medium #medium node  
+-l month #month_hdd.q  
+-l month_qpu #month_gpu.q  
+-l short #short.q  
 
 ### ジョブの確認
 $ qstat  #自分のジョブの状況を確認する  
