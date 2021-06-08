@@ -2,8 +2,8 @@
 
 ## コマンドまとめ
 ### login
-$ ssh user_name@gw2.ddbj.nig.ac.jp  #gateway node  
-$ qlogin  
+$ ssh user_name@gw2.ddbj.nig.ac.jp  #gateway node ここでJobを投げてはいけない。  
+$ qlogin  #こっちに入ってからqsubコマンドでJobを投げる。  
  
 ### ノードからのlogout
 $ exit  
