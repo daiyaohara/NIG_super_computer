@@ -2,7 +2,7 @@
 
 ## コマンドまとめ
 ### login
-$ ssh user_name@gw2.ddbj.nig.ac.jp  #gateway node
+$ ssh user_name@gw2.ddbj.nig.ac.jp  #gateway node  
 $ qlogin  
  
 ### ノードからのlogout
