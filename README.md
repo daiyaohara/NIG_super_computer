@@ -1,6 +1,9 @@
 # NIG_super_computer
 
-## コマンドまとめ
+## コマンドまとめ  
+### 公開鍵の登録（アカウント入手後に一度だけ行う、同一アカウントでもPCごとに登録が必要）   
+https://sc2.ddbj.nig.ac.jp/index.php/2014-09-17-05-42-33  
+  
 ### login
 $ ssh user_name@gw.ddbj.nig.ac.jp  #gateway node ここでJobを投げてはいけない。  
 $ qlogin  #こっちに入ってからqsubコマンドでJobを投げる。  
