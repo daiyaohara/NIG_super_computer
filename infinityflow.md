@@ -33,3 +33,17 @@ imputed_data <- infinity_flow(
     cores = cores, extra_args_export = extra_args_export,   
     extra_args_correct_background = extra_args_correct_background   
     )  
+    
+imputed_data <- infinity_flow(  
+    path_to_fcs = path_to_fcs,  
+    path_to_output = file.path(dir,"output_prac3") ,  
+    path_to_intermediary_results = path_to_intermediary_results,  
+    backbone_selection_file = backbone_selection_file,  
+    annotation = targets,  
+    isotype = isotypes,  
+    input_events_downsampling = 500,  
+    prediction_events_downsampling = 250,  
+    verbose = TRUE,  
+    cores = cores, extra_args_export = extra_args_export,   
+    extra_args_correct_background = extra_args_correct_background   
+    )  
