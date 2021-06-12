@@ -37,6 +37,7 @@ $ qsub -l s_vmem=512G -l mem_req=512G -l medium FILE_NAME
 ### ジョブの確認
 $ qstat  #自分のジョブの状況を確認する  
 $ qstat -j job_ID #job_ID のジョブについて状況を確認する。  
+$ qstat -j job_ID | grep usage  #メモリ使用状況の確認、vmem, maxvmem要求したメモリ量を超えそうになったら一旦qdelで止めた方が良い。   
 $ qstat -g c #全体の状況を確認する  
 
 ### 20210612追記  
