@@ -14,12 +14,16 @@ $ exit
 ### gatewayノードからのlogout
 $ exit  #logoutしても投入中のジョブは消えない。
 
-### scp (local -> server)
-$ scp file_name user_name@gw2.ddbj.nig.ac.jp:/home/user_name/
+### scp (local -> server)  
+Localのコマンドラインで下記を入力  
+$ scp file_name user_name@gw2.ddbj.nig.ac.jp:/home/user_name/  
 
 ### sftp (server -> local)
-$ sftp user_name@gw2.ddbj.nig.ac.jp  
-$ > get PATH
+Localのコマンドラインで下記を入力 sftpを使ったpathにファイルがダウンロードされる  
+$ sftp user_name@gw2.ddbj.nig.ac.jp   
+$ > get PATH  
+$ > get -r file #fileの中身すべて  
+$ > exit  
 
 ### ジョブを投げる
 $ qsub -l d_rt=192:00:00 -l s_rt=192:00:00 test.sh   #3日以上ジョブを実行したいとき  
