@@ -166,11 +166,19 @@ bowtie2 -x ${path}/rnaseq/ecoli_genome
 #### ジョブの同時実行数上限
 qquotaコマンドで確認可能。現状300まで可能
 
+### Singularityの使用方法 ###
+#### docker-hubからsifファイルを取得 ##### 
+$ qlogin -l s_vmem=20G -l mem_req=20G  
+$ singularity build fastpg_latest.sif docker://jefferys/fastpg:latest  
+$ singularity run fastpg_latest.sif   
+
 ## reference  
 1. https://sc2.ddbj.nig.ac.jp/index.php/ja-howtouse
 2. https://bi.biopapyrus.jp/os/linux/qsub.html
 3. https://sc2.ddbj.nig.ac.jp/images/stories/meetingdoc/20120510/ja/ja_Knowhow-for-entering-jobs-in-UGE-1.pdf
 4. https://sc2.ddbj.nig.ac.jp/index.php/index.php/ja-uge-additional#info8
+
+
 
 ## memo
 ### 用語
