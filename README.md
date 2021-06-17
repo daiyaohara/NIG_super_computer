@@ -100,6 +100,11 @@ $ which pip #~/miniconda3/envs/ENV_NAME/bin/pip
 $ ./conda list -n ENV_NAME #インストールされているパッケージの確認  
 $ source deactivate ENV_NAME #無効化  
 
+#### infinityflow  
+$./conda create -n infinityflow  
+$ source activate infintiyflow  
+$ conda install -c bioconda bioconductor-infinityflow  
+
 ### virtualenv
 1. virtualenvはデフォルトでインストールされている。  
 2. virtualenv pyenv1  
