@@ -177,6 +177,10 @@ $ qlogin -l s_vmem=20G -l mem_req=20G
 $ singularity build fastpg_latest.sif docker://jefferys/fastpg:latest  
 $ singularity run fastpg_latest.sif   
 
+#### jupyter-notebook ####
+$ singularity exec scvelo_acastanza2.sif jupyter-notebook  
+
+
 ## reference  
 1. https://sc2.ddbj.nig.ac.jp/index.php/ja-howtouse
 2. https://bi.biopapyrus.jp/os/linux/qsub.html
